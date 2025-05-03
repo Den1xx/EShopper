@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    internal class BrandDal : Repository<Brand,DataContext>
+    public class BrandDal : Repository<Brand,DataContext>
     {
                 
     }

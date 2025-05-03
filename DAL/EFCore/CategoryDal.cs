@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    internal class CategoryDal : Repository<Category, DataContext>
+    public class CategoryDal : Repository<Category, DataContext>
     {
         
     }
