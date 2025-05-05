@@ -11,6 +11,10 @@ namespace DAL.EFCore.Context
 {
     public class DataContext : DbContext
     {
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-2PQ9B8P;Database=EShopper;Integrated Security=true;TrustServerCertificate=true;");

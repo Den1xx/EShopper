@@ -11,6 +11,12 @@ namespace DAL.EFCore
 {
     public class BrandDal : Repository<Brand,DataContext>
     {
-                
+        private readonly DataContext _context;
+        public BrandDal(DataContext context) : base(context)
+        {
+
+
+        }
+
     }
 }

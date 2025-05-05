@@ -12,8 +12,13 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class ProductDal : Repository<Product, DbContext>, IProductDal
+    public class ProductDal : Repository<Product, DataContext>, IProductDal
     {
+        private readonly DataContext _context;
+        public ProductDal(DataContext context):base(context) 
+        {
         
+         
+        }
     }
 }

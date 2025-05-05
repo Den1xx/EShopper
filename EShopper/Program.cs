@@ -14,12 +14,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); //default connection'u burasý yapýyor.
 
-var app = builder.Build();
-
 //Dependency Injection
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDal, ProductDal>();
+
+var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -11,6 +11,11 @@ namespace DAL.EFCore
 {
     public class CategoryDal : Repository<Category, DataContext>
     {
-        
+        private readonly DataContext _context;
+        public CategoryDal(DataContext context) : base(context)
+        {
+
+        }
+
     }
 }

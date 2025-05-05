@@ -16,7 +16,7 @@ namespace EShopper.Controllers
         public IActionResult Index()
         {
             var products = _productService.GetAll();
-            return View();
+            return View(products);
         }
         
     }
