@@ -12,7 +12,8 @@ namespace EShopper.ViewComponents.Brand
         }
         public IViewComponentResult Invoke()
         {
-            return View(_brandService.GetAll());
+            var brands = _brandService.GetAll();
+            return View(brands);
         }
     }
 }

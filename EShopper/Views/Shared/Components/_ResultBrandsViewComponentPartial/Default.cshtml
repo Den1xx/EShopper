@@ -4,7 +4,7 @@
 	<ul class="nav nav-pills nav-stacked">
 		@foreach (var item in Model)
 		{
-			<li><a href="#"> <span class="pull-right">(50)</span></a>@item.Name</li>
+			<li><a href="#"> <span class="pull-right">(@item.Products.Count())</span></a>@item.Name</li>
 		}
 	</ul>
 </div>

@@ -21,7 +21,7 @@ namespace DAL.EFCore
         }
 
         public T Find(int id) => _context.Set<T>().Find(id);
-        public List<T> GetAll() => _context.Set<T>().ToList();
+        public virtual List<T> GetAll() => _context.Set<T>().ToList();
         public List<T> GetOne(Expression<Func<T, bool>> filter) => _context.Set<T>().Where(filter).ToList();
         public int Create(T entity) 
         { 

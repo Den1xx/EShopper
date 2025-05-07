@@ -36,7 +36,7 @@ namespace BLL.Concrete
 
         public List<Brand> GetAll()
         {
-            throw new NotImplementedException();
+            return _brandDal.GetAll();
         }
 
         public List<Brand> GetOne(Expression<Func<Brand, bool>> filter)
