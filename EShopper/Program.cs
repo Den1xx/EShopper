@@ -19,6 +19,9 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDal, ProductDal>();
 
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IBrandDAl, BrandDal>();
+
 var app = builder.Build();
 
 

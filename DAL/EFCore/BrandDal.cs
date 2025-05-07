@@ -1,4 +1,5 @@
-﻿using DAL.EFCore.Context;
+﻿using DAL.EFCore.Abstract;
+using DAL.EFCore.Context;
 using ENTITY;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class BrandDal : Repository<Brand,DataContext>
+    public class BrandDal : Repository<Brand,DataContext> , IBrandDAl
     {
         private readonly DataContext _context;
         public BrandDal(DataContext context) : base(context)
