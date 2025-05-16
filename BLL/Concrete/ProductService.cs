@@ -31,7 +31,7 @@ namespace BLL.Concrete
 
         public Product Find(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.Find(id);
         }
 
         public List<Product> GetAll()
@@ -41,7 +41,7 @@ namespace BLL.Concrete
 
         public List<Product> GetOne(Expression<Func<Product, bool>> filter)
         {
-            throw new NotImplementedException();
+            return _productDal.GetOne(filter);
         }
 
         public int Update()

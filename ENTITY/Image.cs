@@ -12,5 +12,6 @@ namespace ENTITY
         public string Url { get; set; }
 
         public string ProductId { get; set; }
+        
     }
 }

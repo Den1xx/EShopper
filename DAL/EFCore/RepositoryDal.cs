@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class Repository<T, TContext> : IRepository<T> where T : class where TContext : DbContext
+    public class RepositoryDal<T, TContext> : IRepositoryDal<T> where T : class where TContext : DbContext
     {
         private readonly TContext _context;
 
-        public Repository(TContext context)
+        public RepositoryDal(TContext context)
         {
             _context = context;
         }

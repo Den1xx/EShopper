@@ -18,14 +18,19 @@ namespace EShopper.Controllers
             var products = _productService.GetAll();
             return View(products);
         }
-        public IActionResult ProductDetails()
+        public IActionResult ProductDetails(int id)
         {
-            return View();
+            var products = _productService.GetOne((p => p.Id == id));
+            return View(products);
         }
         public IActionResult Products()
         {
             var products2 = _productService.GetAll();
             return View(products2);
+        }
+        public IActionResult Contact() {
+        
+            return View();
         }
 
     }

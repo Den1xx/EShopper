@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore.Abstract
 {
-    public interface IProductDal: IRepository<Product>
+    public interface IProductDal: IRepositoryDal<Product>
     {
 
     }

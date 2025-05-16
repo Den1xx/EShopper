@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore.Abstract
 {
-    public interface IBrandDAl : IRepository<Brand>
+    public interface IBrandDal : IRepositoryDal<Brand>
     {
     }
 }

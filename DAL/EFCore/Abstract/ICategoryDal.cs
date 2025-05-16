@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore.Abstract
 {
-    public interface ICategoryDal : IRepository<Category>
+    public interface ICategoryDal : IRepositoryDal<Category>
     {
     }
 }

@@ -13,8 +13,8 @@ namespace BLL.Concrete
 {
     public class BrandService : IBrandService
     {
-        private IBrandDAl _brandDal;
-        public BrandService(IBrandDAl brandDal)
+        private IBrandDal _brandDal;
+        public BrandService(IBrandDal brandDal)
         {
             _brandDal = brandDal;
         }

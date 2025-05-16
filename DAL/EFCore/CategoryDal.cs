@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class CategoryDal : Repository<Category, DataContext>, ICategoryDal
+    public class CategoryDal : RepositoryDal<Category, DataContext>, ICategoryDal
     {
         private readonly DataContext _context;
         public CategoryDal(DataContext context) : base(context)

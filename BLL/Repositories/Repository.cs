@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    internal class Repository<T> : IRepository<T> where T : class
+    internal class Repository<T> : IRepositoryDal<T> where T : class
     {
         public int Create(T entity)
         {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class BrandDal : Repository<Brand,DataContext> , IBrandDAl
+    public class BrandDal : RepositoryDal<Brand,DataContext> , IBrandDal
     {
         private readonly DataContext _context;
 
