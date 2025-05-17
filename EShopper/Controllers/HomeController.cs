@@ -20,7 +20,8 @@ namespace EShopper.Controllers
         }
         public IActionResult ProductDetails(int id)
         {
-            var products = _productService.GetOne((p => p.Id == id));
+            //var products = _productService.GetOne((p => p.Id == id));
+            var products = _productService.Find(id);
             return View(products);
         }
         public IActionResult Products()
