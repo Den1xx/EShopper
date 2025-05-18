@@ -11,18 +11,13 @@
 			<div class="product-image-wrapper">
 				<div class="single-products">
 					<div class="productinfo text-center">
-						<img src="~/images/shop/product11.jpg" alt="">
-						<h2>$@product.Price</h2>
-						<p>@product.Title</p>
-						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-					</div>
-					<div class="product-overlay">
-						<div class="overlay-content">
+						<a href="/Home/ProductDetails?id=@product.Id">
+							<img src="~/images/home/product5.jpg" alt="" />
 							<h2>$@product.Price</h2>
 							<p>@product.Title</p>
-							<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-						</div>
-					</div>
+						</a>
+						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+					</div>					
 				</div>
 				<div class="choose">
 					<ul class="nav nav-pills nav-justified">

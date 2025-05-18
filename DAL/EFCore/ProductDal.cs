@@ -20,6 +20,9 @@ namespace DAL.EFCore
 
 
         }
-        
+        //public List<Product> GetAll()
+        //{
+        //    return _context.Products.Include(i => i.Images).ToList();
+        //}
     }
 }
