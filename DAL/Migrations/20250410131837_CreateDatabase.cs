@@ -111,15 +111,15 @@ namespace DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId1 = table.Column<int>(type: "int", nullable: true)
+                    //ProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Images", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Images_Products_ProductId1",
-                        column: x => x.ProductId1,
+                        name: "FK_Images_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id");
                 });
@@ -135,9 +135,9 @@ namespace DAL.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Images_ProductId1",
+                name: "IX_Images_ProductId",
                 table: "Images",
-                column: "ProductId1");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_BrandId",
