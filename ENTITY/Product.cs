@@ -12,6 +12,7 @@ namespace ENTITY
         public double Price { get; set; }
         public short Stock { get; set; }
         public int BrandId { get; set; }
+        public Brand Brand { get; set; }
         public List<Comment> Comments { get; set; }
 
     }

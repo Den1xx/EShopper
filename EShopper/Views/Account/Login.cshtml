@@ -1,0 +1,33 @@
+﻿@using EShopper.Models
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div class="col-sm-4 col-sm-offset-1">
+    <div class="login-form">
+        <!--login form-->
+        @if(TempData["success"]!= null)
+        {
+            <div class="alert alert-warning">
+                @TempData["success"]
+            </div>
+        }
+        <h2>Login to your account</h2>
+		<form asp-action="Login" asp-controller="Account" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="ReturnUrl"value="@Model.ReturnUrl" />
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+			<button type="submit" class="btn btn-success">Login</button>
+		</form>
+	</div><!--/login form-->
+</div>

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250410131837_CreateDatabase")]
+    [Migration("20250520190706_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -108,11 +108,7 @@ namespace DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId1")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
@@ -121,7 +117,7 @@ namespace DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId1");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Images");
                 });
@@ -188,9 +184,13 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("ENTITY.Image", b =>
                 {
-                    b.HasOne("ENTITY.Product", null)
+                    b.HasOne("ENTITY.Product", "Product")
                         .WithMany("Images")
-                        .HasForeignKey("ProductId1");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ENTITY.Product", b =>

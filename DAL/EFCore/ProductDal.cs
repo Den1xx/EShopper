@@ -18,12 +18,18 @@ namespace DAL.EFCore
         private readonly DataContext _context;
         public ProductDal(DataContext context) : base(context)
         {
-
-
+            _context = context;
         }
-        //public List<Product> GetAll()
-        //{ 
-        //    return _context.Products.Include(i => i.Images).ToList();
-        //}
+        public List<Product> GetAll()
+        {
+            return _context.Products.Include(i => i.Images).ToList();
+        }
+        public Product Find(int id) {
+
+            //return _context.Products.Include(p => p.Brand);
+            return _context.Products
+                  .Include(p => p.Brand)
+                  .FirstOrDefault(p => p.Id == id);
+        }
     }
 }

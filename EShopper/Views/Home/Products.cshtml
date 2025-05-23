@@ -12,9 +12,12 @@
 				<div class="single-products">
 					<div class="productinfo text-center">
 						<a href="/Home/ProductDetails?id=@product.Id">
-							<img src="~/images/home/product5.jpg" alt="" />
-							<h2>$@product.Price</h2>
-							<p>@product.Title</p>
+							@foreach (var img in product.Images)
+							{
+								<img src="~/images/home/@img.Url" alt="" />
+								<h2>$@product.Price</h2>
+								<p>@product.Title</p>
+							}
 						</a>
 						<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 					</div>					
