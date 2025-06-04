@@ -13,6 +13,10 @@ namespace ENTITY
         public short Stock { get; set; }
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Categories { get; set; }
+
         public List<Comment> Comments { get; set; }
 
     }
