@@ -22,7 +22,7 @@ namespace DAL.EFCore
         }
         public List<Product> GetAll()
         {
-            return _context.Products.Include(c => c.Categories).Include(i => i.Images).ToList();
+            return _context.Products.Include(c => c.Categories).Include(i => i.Images).Include(b => b.Brand).ToList();
             
         }
         public Product Find(int id) {
