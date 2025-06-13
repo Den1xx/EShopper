@@ -34,7 +34,7 @@ namespace DAL.EFCore
             _context.Set<T>().Remove(entity); return _context.SaveChanges(); 
         }
 
-        public int Update(T entity) 
+        public int Update() 
         { 
             
             return _context.SaveChanges(); 

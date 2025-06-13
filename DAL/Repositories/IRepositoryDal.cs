@@ -10,7 +10,7 @@ namespace DAL.Repositories
     public interface IRepositoryDal<T> where T : class
     {
         int Create(T entity);
-        int Update(T entity);
+        int Update();
         int Delete(T entity);
         List<T>GetAll();
         List<T>GetOne(Expression<Func<T,bool>> filter);
