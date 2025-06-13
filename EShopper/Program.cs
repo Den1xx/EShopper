@@ -3,6 +3,7 @@ using BLL.Concrete;
 using DAL.EFCore;
 using DAL.EFCore.Abstract;
 using DAL.EFCore.Context;
+using DAL.Mapping;
 using ENTITY;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -73,6 +74,7 @@ builder.Services.AddScoped<ICategoryDal, CategoryDal>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IMailDal, MailDal>();
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

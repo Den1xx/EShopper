@@ -1,4 +1,5 @@
-﻿@model Product
+﻿@using DAL.DTOs.ProductDto
+@model ProductCreateDTO
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -21,11 +22,11 @@
                             <form action="/Product/Create" method="post" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Ürün Kategorisi Seçiniz</label>
-                                        <select class="form-control">
-                                            @foreach (Category item in ViewBag.Categories)
+                                        <label>Kategori</label>
+                                        <select class="form-control" asp-for="CategoryId">
+                                            @foreach (Category item in (List<Category>)ViewBag.Categories)
                                             {
-                                                <option value="@item.Id"> @item.Name </option>
+                                                <option value="@item.Id">@item.Name</option>
                                             }
 
                                         </select>
@@ -34,6 +35,19 @@
                                         <label>Ürün Adı</label>
                                         <input asp-for="Title" type="text" class="form-control" placeholder="Ürün adı girin..">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Rating</label>
+                                        <input asp-for="Rating" type="text" class="form-control" placeholder="Ürün adı girin..">
+                                    </div>
+                                    <label>Marka</label>
+                                    <select class="form-control" asp-for="BrandId">
+                                        @foreach (Brand item in (List<Brand>)ViewBag.Brands)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+
+                                    </select>
+                                    
                                     <div class="form-group">
                                         <label>WebId</label>
                                         <input asp-for="WebID" type="number" class="form-control" placeholder="WebID yazın">

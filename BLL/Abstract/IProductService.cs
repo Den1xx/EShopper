@@ -10,9 +10,9 @@ namespace BLL.Abstract
 {
     public interface IProductService
     {
-        int Create();
+        int Create(Product entity);
         int Update();
-        int Delete();
+        int Delete(int id);
         List<Product> GetAll();
         List<Product> GetOne(Expression<Func<Product, bool>> filter);
         Product Find(int id);

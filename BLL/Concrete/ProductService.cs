@@ -19,14 +19,14 @@ namespace BLL.Concrete
             _productDal = productDal;
         }
 
-        public int Create()
+        public int Create(Product entity)
         {
-            throw new NotImplementedException();
+            return _productDal.Create(entity);
         }
 
-        public int Delete()
+        public int Delete(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.Delete(id);
         }
 
         public Product Find(int id)
@@ -46,7 +46,7 @@ namespace BLL.Concrete
 
         public int Update()
         {
-            throw new NotImplementedException();
+            return _productDal.Update();
         }
     }
 }
