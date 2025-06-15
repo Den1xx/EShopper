@@ -57,5 +57,26 @@ namespace EShopper.Controllers
             ViewBag.Categories = _categoryService.GetAll();
             return View(productCreateDTO);
         }
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.Find(Id);
+            _productService.Delete(product);
+            return RedirectToAction("Index");
+        }
+
+
+        //public ActionResult Update(int id)
+        //{
+        //    _productService.GetOne(p => p.Id == id);
+        //    var product = _productService.Find(id);
+
+        //    if (product == null)
+        //    {
+        //        TempData["ErrorMessage"] = "Product not found.";
+        //        return RedirectToAction("Index");
+        //    }
+
+        //}
     }
+
 }

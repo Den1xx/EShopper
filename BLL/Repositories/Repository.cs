@@ -15,7 +15,7 @@ namespace BLL.Repositories
             throw new NotImplementedException();
         }
 
-        public int Delete(T entity)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace BLL.Repositories
             throw new NotImplementedException();
         }
 
-        public int Update(T entity)
+        public int Update()
         {
             throw new NotImplementedException();
         }

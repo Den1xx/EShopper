@@ -29,9 +29,14 @@ namespace DAL.EFCore
         }
 
 
-        public int Delete(T entity) 
-        { 
-            _context.Set<T>().Remove(entity); return _context.SaveChanges(); 
+        public int Delete(int id) 
+        {
+            var entity = _context.Set<T>().Find(id);
+            if (entity != null)
+            {
+                _context.Set<T>().Remove(entity);                
+            }
+            return _context.SaveChanges();
         }
 
         public int Update() 

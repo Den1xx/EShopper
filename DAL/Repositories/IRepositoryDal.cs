@@ -11,7 +11,7 @@ namespace DAL.Repositories
     {
         int Create(T entity);
         int Update();
-        int Delete(T entity);
+        int Delete(int id);
         List<T>GetAll();
         List<T>GetOne(Expression<Func<T,bool>> filter);
         T Find(int id);
