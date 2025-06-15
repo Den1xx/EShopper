@@ -63,24 +63,16 @@ namespace EShopper.Controllers
         //    _productService.Delete(product);
         //    return RedirectToAction("Index");
         //}
-
-        //public ActionResult Update(int id)
-        //{
-        //    _productService.GetOne(p => p.Id == id);
-        //    var product = _productService.Find(id);
-
-        //    if (product == null)
-        //    {
-        //        TempData["ErrorMessage"] = "Product not found.";
-        //        return RedirectToAction("Index");
-        //    }
-
-        //}
+        
         public IActionResult Delete(int productId)
         {
             _productService.Delete(productId);
 
             return RedirectToAction("Index");
+        }
+        public ActionResult Update(int id)
+        {
+            _productService.get
         }
     }
 
