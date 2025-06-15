@@ -57,13 +57,12 @@ namespace EShopper.Controllers
             ViewBag.Categories = _categoryService.GetAll();
             return View(productCreateDTO);
         }
-        public IActionResult Delete(int id)
-        {
-            var product = _productService.Find(Id);
-            _productService.Delete(product);
-            return RedirectToAction("Index");
-        }
-
+        //public IActionResult Delete(Product entity)
+        //{
+        //    var product = _productService.Find(entity.Id);
+        //    _productService.Delete(product);
+        //    return RedirectToAction("Index");
+        //}
 
         //public ActionResult Update(int id)
         //{
@@ -77,6 +76,12 @@ namespace EShopper.Controllers
         //    }
 
         //}
+        public IActionResult Delete(int productId)
+        {
+            _productService.Delete(productId);
+
+            return RedirectToAction("Index");
+        }
     }
 
 }
