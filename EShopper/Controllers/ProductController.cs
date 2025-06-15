@@ -14,8 +14,8 @@ namespace EShopper.Controllers
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly IBrandService _brandService;
-        public  readonly IMapper  _mapper;
-        public ProductController(IProductService productService, ICategoryService categoryService,IMapper mapper, IBrandService brandService)
+        public readonly IMapper _mapper;
+        public ProductController(IProductService productService, ICategoryService categoryService, IMapper mapper, IBrandService brandService)
         {
             _productService = productService;
             _categoryService = categoryService;
@@ -24,7 +24,7 @@ namespace EShopper.Controllers
         }
         public IActionResult Index()
         {
-            var products =_productService.GetAll();
+            var products = _productService.GetAll();
             return View(products);
         }
         public ActionResult Create()
@@ -37,12 +37,12 @@ namespace EShopper.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(ProductCreateDTO productCreateDTO, IFormFile[] files)
         {
-            ModelState.Remove ("Comments");
-            ModelState.Remove ("Categories");
-            ModelState.Remove ("Brand");
+            ModelState.Remove("Comments");
+            ModelState.Remove("Categories");
+            ModelState.Remove("Brand");
             if (ModelState.IsValid)
             {
-                 Product p = _mapper.Map<Product>(productCreateDTO);
+                Product p = _mapper.Map<Product>(productCreateDTO);
                 if (files != null)
                 {
                     foreach (IFormFile item in files)
@@ -63,16 +63,30 @@ namespace EShopper.Controllers
         //    _productService.Delete(product);
         //    return RedirectToAction("Index");
         //}
-        
+
         public IActionResult Delete(int productId)
         {
             _productService.Delete(productId);
 
             return RedirectToAction("Index");
         }
-        public ActionResult Update(int id)
+        public ActionResult Update(int? id)
         {
-            _productService.get
+            if (id == null)
+            {
+                TempData["ErrorMessage"] = "Bir ürün seçiniz.";
+                return RedirectToAction("Index");
+            }
+            var products = _productService.GetOne(x => x.Id == id.Value);
+            if (products == null || !products.Any())
+            {
+                TempData["ErrorMessage"] = "Seçilen ürün bulunamadı.";
+                return RedirectToAction("Index");
+            }
+            ViewBag.Categories = _categoryService.GetAll();
+            return View(products);
+
+
         }
     }
 
