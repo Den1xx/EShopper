@@ -85,8 +85,9 @@ namespace EShopper.Controllers
                 TempData["message"] = "Seçilen ürün bulunamadı.";
                 return RedirectToAction("Index");
             }
+            
             ViewBag.Categories = _categoryService.GetAll();
-            return View(products);
+            return View(_mapper.Map<UpdateProductDTO>(products));
 
 
         }
