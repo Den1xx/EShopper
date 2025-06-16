@@ -26,11 +26,11 @@
     <section class="content">
         <div class="container-fluid">
             <a href="/Product/Create" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Yeni Ürün Ekle </a>
-            @if (TempData["Message"] != null)
+            @if (TempData["message"] != null)
             {
-                <a class="alert alert-danger mt-2">
-                    @TempData["Message"]
-                </a>
+                <h4 class="alert alert-danger mt-2">
+                    @TempData["message"]
+                </h4>
             }
             <!-- Small boxes (Stat box) -->
             <div class="row">

@@ -5,6 +5,7 @@ using DAL.Migrations;
 using ENTITY;
 using EShopper.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.CodeDom;
 
 namespace EShopper.Controllers
@@ -74,13 +75,14 @@ namespace EShopper.Controllers
         {
             if (id == null)
             {
-                TempData["ErrorMessage"] = "Bir ürün seçiniz.";
+                TempData["message"] = "Bir ürün seçiniz.";
                 return RedirectToAction("Index");
             }
             var products = _productService.GetOne(x => x.Id == id.Value);
-            if (products == null || !products.Any())
+
+            if (products.IsNullOrEmpty())
             {
-                TempData["ErrorMessage"] = "Seçilen ürün bulunamadı.";
+                TempData["message"] = "Seçilen ürün bulunamadı.";
                 return RedirectToAction("Index");
             }
             ViewBag.Categories = _categoryService.GetAll();
