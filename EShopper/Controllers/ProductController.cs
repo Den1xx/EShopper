@@ -88,6 +88,7 @@ namespace EShopper.Controllers
 
             var product = _mapper.Map<ProductUpdateDTO>(products);
             ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Brands = _brandService.GetAll();
             return View(product);
 
 
