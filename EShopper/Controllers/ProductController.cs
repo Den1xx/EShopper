@@ -78,16 +78,18 @@ namespace EShopper.Controllers
                 TempData["message"] = "Bir ürün seçiniz.";
                 return RedirectToAction("Index");
             }
-            var products = _productService.GetOne(x => x.Id == id.Value);
+            var products = _productService.Find(id.Value);
 
-            if (products.IsNullOrEmpty())
+            if (products == null )
             {
                 TempData["message"] = "Seçilen ürün bulunamadı.";
                 return RedirectToAction("Index");
             }
-            
+
+            var product = _mapper.Map<ProductUpdateDTO>(products);
             ViewBag.Categories = _categoryService.GetAll();
-            return View(_mapper.Map<UpdateProductDTO>(products));
+            return View(product);
+
 
 
         }

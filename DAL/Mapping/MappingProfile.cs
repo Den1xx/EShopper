@@ -14,6 +14,7 @@ namespace DAL.Mapping
         public MappingProfile()
         {
             CreateMap<ProductCreateDTO, Product>().ReverseMap();
+            CreateMap<ProductUpdateDTO,Product >().ReverseMap();
             
         }
     }

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace DAL.DTOs.ProductDto
 {
-    public class ProductUpdateDto
+    public class ProductUpdateDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public int WebID { get; set; }
         public List<Image> Images { get; set; }
 
-        public ProductUpdateDto()
+        public ProductUpdateDTO()
         {
             Images = new List<Image>();
         }
