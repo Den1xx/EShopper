@@ -19,6 +19,7 @@ namespace ENTITY
 
         public List<Comment> Comments { get; set; }
         public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
     }
 }

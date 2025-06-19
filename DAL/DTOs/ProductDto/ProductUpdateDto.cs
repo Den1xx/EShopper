@@ -28,5 +28,6 @@ namespace DAL.DTOs.ProductDto
         public Category Categories { get; set; }
 
         public List<Comment> Comments { get; set; }
+        public DateTime ModifiedDate { get; set; }
     }
 }

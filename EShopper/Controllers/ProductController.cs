@@ -65,12 +65,13 @@ namespace EShopper.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        public IActionResult Delete(int productId)
-        {
-            _productService.Delete(productId);
+        //public IActionResult Delete(int productId)
+        //{
+        //    _productService.Delete(productId);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
+
         public ActionResult Update(int? id)
         {
             if (id == null)
@@ -80,7 +81,7 @@ namespace EShopper.Controllers
             }
             var products = _productService.Find(id.Value);
 
-            if (products == null )
+            if (products == null)
             {
                 TempData["message"] = "Seçilen ürün bulunamadı.";
                 return RedirectToAction("Index");
@@ -89,31 +90,69 @@ namespace EShopper.Controllers
             var product = _mapper.Map<ProductUpdateDTO>(products);
             ViewBag.Categories = _categoryService.GetAll();
             ViewBag.Brands = _brandService.GetAll();
-            return View(_mapper.Map<ProductUpdateDTO>(product));
+            return View(product);
 
         }
+        //[HttpPost]
+        //public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
+        //{
+        //    ModelState.Remove("Comments");
+        //    ModelState.Remove("Categories");
+        //    ModelState.Remove("Brand");
+        //    if (ModelState.IsValid)
+        //    {
+        //        Product p = _mapper.Map<Product>(updateProduct);
+        //        if (files != null)
+        //        {
+        //            foreach (IFormFile item in files)
+        //            {
+        //                p.Images.Add(new Image() { Url = await ImageOperations.UploadImageAsync(item) });
+        //            }
+        //        }
+        //        p.CreatedDate = DateTime.Now;
+        //        _productService.Create(p);
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.Categories = _categoryService.GetAll();
+        //    ViewBag.Categories = _brandService.GetAll();
+        //    return View(updateProduct);
+        //}
         [HttpPost]
         public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
         {
-            ModelState.Remove("Comments");
-            ModelState.Remove("Categories");
-            ModelState.Remove("Brand");
             if (ModelState.IsValid)
             {
-                Product p = _mapper.Map<Product>(updateProduct);
+                var product = _productService.Find(updateProduct.Id);
+                var oldImages = new List<Image>();
+                updateProduct.Images = product.Images;
+
                 if (files != null)
                 {
+                    foreach (var imageId in ImageId)
+                    {
+                        var Img = product.Images.Where(i => i.Id == imageId).FirstOrDefault();
+                        oldImages.Add(Img);
+                        ImageOperations.DeleteImage(Img.Url);
+                        updateProduct.Images.Remove(Img);
+                    }
+
+
                     foreach (IFormFile item in files)
                     {
-                        p.Images.Add(new Image() { Url = await ImageOperations.UploadImageAsync(item) });
+                        updateProduct.Images.Add(new Image() { Url = await ImageOperations.UploadImageAsync(item) });
+
                     }
                 }
-                p.CreatedDate = DateTime.Now;
-                _productService.Create(p);
+                updateProduct.ModifiedDate = DateTime.Now;
+
+
+                product = _mapper.Map<Product>(updateProduct);
+
+                //_productService.Update(product, oldImages);
                 return RedirectToAction("Index");
             }
+
             ViewBag.Categories = _categoryService.GetAll();
-            ViewBag.Categories = _brandService.GetAll();
             return View(updateProduct);
         }
     }
