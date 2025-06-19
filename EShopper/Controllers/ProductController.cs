@@ -58,12 +58,12 @@ namespace EShopper.Controllers
             ViewBag.Categories = _categoryService.GetAll();
             return View(productCreateDTO);
         }
-        //public IActionResult Delete(Product entity)
-        //{
-        //    var product = _productService.Find(entity.Id);
-        //    _productService.Delete(product);
-        //    return RedirectToAction("Index");
-        //}
+        public IActionResult Delete(int id)
+        {
+            var product = _productService.Find(id);
+            _productService.Delete(product);
+            return RedirectToAction("Index");
+        }
 
         //public IActionResult Delete(int productId)
         //{
@@ -120,11 +120,12 @@ namespace EShopper.Controllers
         [HttpPost]
         public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
         {
+
             if (ModelState.IsValid)
             {
                 var product = _productService.Find(updateProduct.Id);
                 var oldImages = new List<Image>();
-                updateProduct.Images = product.Images;
+              
 
                 if (files != null)
                 {
@@ -148,11 +149,12 @@ namespace EShopper.Controllers
 
                 product = _mapper.Map<Product>(updateProduct);
 
-                //_productService.Update(product, oldImages);
+                _productService.Update(product, oldImages);
                 return RedirectToAction("Index");
             }
 
             ViewBag.Categories = _categoryService.GetAll();
+            ViewBag.Brands = _brandService.GetAll();
             return View(updateProduct);
         }
     }

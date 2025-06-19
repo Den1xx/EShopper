@@ -32,5 +32,22 @@ namespace DAL.EFCore
                   .Include(p => p.Brand)
                   .FirstOrDefault(p => p.Id == id);
         }
+
+        public int Update(Product updateProduct, List<Image> Imgs)
+        {
+            _context.Images.RemoveRange(Imgs);
+
+            var product = Find(updateProduct.Id);          
+
+            return _context.SaveChanges();
+        }
+
+        public void Delete(Product entity)
+        {
+            
+            _context.Set<Product>().Remove(entity);
+            _context.SaveChanges();
+        }
     }
+
 }

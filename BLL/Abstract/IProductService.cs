@@ -11,8 +11,8 @@ namespace BLL.Abstract
     public interface IProductService
     {
         int Create(Product entity);
-        int Update();
-        int Delete(int id);
+        int Update(Product updateProduct, List<Image> images);
+        void Delete(Product entity);
         List<Product> GetAll();
         List<Product> GetOne(Expression<Func<Product, bool>> filter);
         Product Find(int id);

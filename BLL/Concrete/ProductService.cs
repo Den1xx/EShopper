@@ -25,9 +25,9 @@ namespace BLL.Concrete
             return _productDal.Create(entity);
         }
 
-        public int Delete(int id)
+        public void Delete(Product entity)
         {
-            return _productDal.Delete(id);
+             _productDal.Delete(entity);
         }
 
         public Product Find(int id)
@@ -45,9 +45,9 @@ namespace BLL.Concrete
             return _productDal.GetOne(filter);
         }
 
-        public int Update()
+        public int Update(Product updateProduct, List<Image> images)
         {
-            return _productDal.Update();
+            return _productDal.Update(updateProduct, images);
         }
     }
 }
