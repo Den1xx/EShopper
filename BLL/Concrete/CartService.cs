@@ -1,4 +1,5 @@
 ﻿using BLL.Abstract;
+using DAL.EFCore.Abstract;
 using ENTITY;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,14 @@ namespace BLL.Concrete
 {
     public class CartService : ICartService
     {
-        public Task<int> AddToCartAsync(CartItem cartItem)
+        private readonly ICartDal _cartDal;
+        public CartService(ICartDal cartDal)
         {
-            throw new NotImplementedException();
+            _cartDal = cartDal;
+        }
+        public async Task<int> AddToCartAsync(CartItem cartItem)
+        {
+            return await _cartDal.AddToCartAsync(cartItem);
         }
 
         public void ClearCart(int cartId)

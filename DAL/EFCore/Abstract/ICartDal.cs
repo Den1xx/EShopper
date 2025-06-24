@@ -10,5 +10,8 @@ namespace DAL.EFCore.Abstract
 {
     public interface ICartDal : IRepositoryDal<Cart>
     {
+        Task<int> AddToCartAsync(CartItem cartItem);
+        Task<Cart> GetCartByUserIdAsync(string userId);
+        void ClearCart(int cartId);
     }
 }
