@@ -74,6 +74,9 @@ builder.Services.AddScoped<ICategoryDal, CategoryDal>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services.AddScoped<IMailDal, MailDal>();
 
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICartDal, CartDal>();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
