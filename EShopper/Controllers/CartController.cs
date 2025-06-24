@@ -17,9 +17,7 @@ namespace EShopper.Controllers
             _productService = productService;
             _userManager = userManager;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
+        
     }
 }
