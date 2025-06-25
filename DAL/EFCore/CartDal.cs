@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace DAL.EFCore
 {
-    public class CartDal : ICartDal
+    public class CartDal : RepositoryDal<Cart,DataContext>,ICartDal
     {
         private readonly DataContext _context;
-        public CartDal(DataContext context)
+
+        public CartDal(DataContext context) : base(context)
         {
             _context = context;
         }
@@ -42,39 +43,24 @@ namespace DAL.EFCore
             throw new NotImplementedException();
         }
 
-        public int Create(Cart entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Cart Find(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Cart> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<Cart> GetCartByUserIdAsync(string userId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Cart> GetOne(Expression<Func<Cart, bool>> filter)
+        public override List<Cart> GetOne(Expression<Func<Cart, bool>> filter=null)
         {
-            throw new NotImplementedException();
-        }
-
-        public int Update()
-        {
-            throw new NotImplementedException();
+            if(filter == null)
+            {
+                return _context.Carts
+               .Include(c => c.CartItems)
+               .ThenInclude(ci => ci.Product).ToList();
+            }
+            return _context.Carts
+            .Include(c => c.CartItems)
+            .ThenInclude(ci => ci.Product)
+            .Where(filter)
+            .ToList();
         }
     }
 }

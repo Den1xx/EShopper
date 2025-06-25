@@ -120,14 +120,17 @@ namespace EShopper.Controllers
         [HttpPost]
         public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
         {
+            ModelState.Remove("Brand");
+            ModelState.Remove("Comments");
+            ModelState.Remove("Categories");
 
             if (ModelState.IsValid)
             {
                 var product = _productService.Find(updateProduct.Id);
-                var oldImages = new List<Image>();
+                var oldImages = product.Images;
               
 
-                if (files != null)
+                if (files.Count()>0)
                 {
                     foreach (var imageId in ImageId)
                     {

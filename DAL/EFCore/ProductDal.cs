@@ -30,6 +30,7 @@ namespace DAL.EFCore
             //return _context.Products.Include(p => p.Brand);
             return _context.Products
                   .Include(p => p.Brand)
+                  .Include(p => p.Images)
                   .FirstOrDefault(p => p.Id == id);
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Abstract
 {
-    public interface ICartService
+    public interface ICartService : IRepositoryDal<Cart>
     {
         Task<int> AddToCartAsync(CartItem cartItem);
         Task<Cart> GetCartByUserIdAsync(string userId);
