@@ -147,7 +147,11 @@ namespace EShopper.Controllers
 
                     }
                 }
-                updateProduct.ModifiedDate = DateTime.Now;
+                else
+                {
+                    updateProduct.Images = oldImages;
+                }
+                    updateProduct.ModifiedDate = DateTime.Now;
 
 
                 product = _mapper.Map<Product>(updateProduct);

@@ -38,8 +38,18 @@ namespace DAL.EFCore
         {
             _context.Images.RemoveRange(Imgs);
 
-            var product = Find(updateProduct.Id);          
+            
+            _context.SaveChanges();
+            var product = _context.Products.Find(updateProduct.Id);
 
+            product.WebID = updateProduct.WebID;
+            product.Title = updateProduct.Title;
+            product.Images.AddRange(updateProduct.Images.Select(i=> new Image() { ProductId=i.ProductId,Url=i.Url}));
+            product.BrandId = updateProduct.BrandId;
+            product.CategoryId = updateProduct.CategoryId;
+            product.ModifiedDate = updateProduct.ModifiedDate;
+            product.Price = updateProduct.Price;
+            product.Stock = updateProduct.Stock;
             return _context.SaveChanges();
         }
 
