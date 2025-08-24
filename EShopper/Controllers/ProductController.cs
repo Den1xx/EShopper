@@ -93,30 +93,8 @@ namespace EShopper.Controllers
             return View(product);
 
         }
-        //[HttpPost]
-        //public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
-        //{
-        //    ModelState.Remove("Comments");
-        //    ModelState.Remove("Categories");
-        //    ModelState.Remove("Brand");
-        //    if (ModelState.IsValid)
-        //    {
-        //        Product p = _mapper.Map<Product>(updateProduct);
-        //        if (files != null)
-        //        {
-        //            foreach (IFormFile item in files)
-        //            {
-        //                p.Images.Add(new Image() { Url = await ImageOperations.UploadImageAsync(item) });
-        //            }
-        //        }
-        //        p.CreatedDate = DateTime.Now;
-        //        _productService.Create(p);
-        //        return RedirectToAction("Index");
-        //    }
-        //    ViewBag.Categories = _categoryService.GetAll();
-        //    ViewBag.Categories = _brandService.GetAll();
-        //    return View(updateProduct);
-        //}
+        
+
         [HttpPost]
         public async Task<ActionResult> Update(ProductUpdateDTO updateProduct, IFormFile[] files, int[] ImageId)
         {
